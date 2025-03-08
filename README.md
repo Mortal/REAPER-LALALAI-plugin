@@ -1,16 +1,18 @@
-REAPER plugin for stem splitting with LALAL.AI
-==============================================
+REAPER plugin for stem splitting
+================================
 
 This repository is NOT affiliated with either REAPER or LALAL.AI.
 
-This repository implements a 3rd party plugin for REAPER, integrating with the API of LALAL.AI for quick and easy stem splitting inside REAPER.
+This repository implements 3rd party plugins for REAPER for quick and easy stem splitting inside REAPER.
+
+One plugin integrates with the API of LALAL.AI (requires a paid subscription), the other with demucs (FOSS, runs locally).
 
 Requirements
 ------------
 
 - REAPER 7 (tested with version 7.33)
 
-- API key for https://www.lalal.ai/
+- API key for https://www.lalal.ai/ - or a local installation of demucs
 
 - GNU/Linux
 
@@ -27,9 +29,15 @@ Installation
 
 - Download this repository.
 
-- Put your LALAL.AI API key into `~/.cache/lalalapikey`.
+- For LALAL:
 
-- Add the script 'Split selected audio into vocals and instrumental stems with LALAL AI.py' as a custom action in REAPER.
+  - Put your LALAL.AI API key into `~/.cache/lalalapikey`.
+
+  - Add the script 'Split selected audio into vocals and instrumental stems with LALAL AI.py' as a custom action in REAPER.
+
+- For demucs:
+
+  - Add the script 'Split selected audio into vocals and instrumental stems with demucs.py' as a custom action in REAPER.
 
 Usage
 -----
