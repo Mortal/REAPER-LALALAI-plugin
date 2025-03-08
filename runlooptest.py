@@ -1,6 +1,6 @@
 import asyncio
 
-from reaperloop import reaper_loop_run
+from reaper_loop import reaper_loop_run
 
 
 async def exception_test() -> None:

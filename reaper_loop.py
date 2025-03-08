@@ -1,3 +1,22 @@
+"""
+Run asyncio code in REAPER plugins with this custom event loop.
+
+ReaperCoopEventLoop is an asyncio event loop that cooperates with REAPER
+by using RPR_runloop to schedule each iteration of the asyncio loop.
+
+Usage:
+
+    from reaper_python import RPR_ShowConsoleMsg
+    from reaper_loop import reaper_loop_run
+
+    async def main() -> None:
+        url = 'https://github.com/adefossez/demucs/raw/refs/heads/main/test.mp3'
+        proc = await asyncio.subprocess.create_subprocess_exec("wget", url)
+        await proc.wait()
+        RPR_InsertMedia("test.mp3", 1)
+
+    reaper_loop_run(main)
+"""
 import asyncio.base_events
 import logging
 import sys

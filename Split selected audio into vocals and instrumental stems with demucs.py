@@ -3,7 +3,7 @@ import os
 from typing import Literal
 
 from reaper_python import *
-from reaperloop import reaper_loop_run
+from reaper_loop import reaper_loop_run
 from rutil import get_time_selection, script_get_single_selected_media_item, range_intersect, MAX_STRBUF
 
 
