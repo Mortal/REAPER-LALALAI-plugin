@@ -5,11 +5,6 @@ import traceback
 import typing
 from typing import Any, Awaitable, Callable, TextIO
 
-from reaper_python import RPR_ShowConsoleMsg
-
-# The following special function is injected by REAPER
-RPR_runloop: Callable[[str], None] = sys.modules["__main__"].RPR_runloop
-
 
 def reaper_loop_run(f: Awaitable[None], name: str | None = None) -> None:
     if name is None:
@@ -47,11 +42,16 @@ class ReaperCoopEventLoop(asyncio.SelectorEventLoop):
         # This yields control to REAPER, so now we have to return.
 
     def reaper_run_forever(self) -> None:
+        from reaper_python import RPR_ShowConsoleMsg
+
+        # The following special function is injected by REAPER
+        RPR_runloop: Callable[[str], None] = sys.modules["__main__"].RPR_runloop
         unixloop = typing.cast(Any, self)
         # Access methods to make sure they exist on self
         run_forever_setup = unixloop._run_forever_setup
         run_forever_cleanup = unixloop._run_forever_cleanup
         run_once = unixloop._run_once
+
         if unixloop._stopping:
             print("ReaperCoopEventLoop stopping early", flush=True)
             return
